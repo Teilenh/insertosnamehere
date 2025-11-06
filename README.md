@@ -86,15 +86,13 @@ For a base image, you can choose any of the Universal Blue images or start from 
     <summary>Base Images</summary>
 
 - Bazzite: `ghcr.io/ublue-os/bazzite:stable`
-- Aurora: `ghcr.io/ublue-os/aurora:stable`
-- Bluefin: `ghcr.io/ublue-os/bluefin:stable`
 - Universal Blue Base: `ghcr.io/ublue-os/base-main:latest`
 - Fedora: `quay.io/fedora/fedora-bootc:42`
 
 You can find more Universal Blue images on the [packages page](https://github.com/orgs/ublue-os/packages).
 </details>
 
-If you don't know which image to pick, choosing the one your system is currently on is the best bet for a smooth transition. To find out what image your system currently uses, run the following command:
+run the following command:
 ```bash
 sudo bootc status
 ```
@@ -116,7 +114,7 @@ Once pushed, go look at the Actions tab on your Github repository's page.  The g
 
 From your bootc system, run the following command substituting in your Github username and image name where noted.
 ```bash
-sudo bootc switch ghcr.io/<username>/<image_name>
+sudo bootc switch ghcr.io/teilenh/insertosnamehere
 ```
 This should queue your image for the next reboot, which you can do immediately after the command finishes. You have officially set up your custom image! See the following section for an explanation of the important parts of the template for customization.
 
