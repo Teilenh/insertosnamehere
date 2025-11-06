@@ -8,9 +8,8 @@ FROM quay.io/fedora/fedora-sway-atomic:latest
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:stable
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
-# ... and so on, here are more base images
-# Universal Blue Images: https://github.com/orgs/ublue-os/packages
+
+# list of UBlue Images: https://github.com/orgs/ublue-os/packages
 # Fedora base image: quay.io/fedora/fedora-bootc:42
 # Fedora Sway atomic: quay.io/fedora/fedora-sway-atomic:latest
 
