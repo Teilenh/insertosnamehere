@@ -50,7 +50,7 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 ---
 
 ### 🧰 Automatisation & outils
-- [x] `build.sh` (optimisations et durcissement)
+- [ ] `build.sh` (optimisations et durcissement)
 - [ ] `sway-setup.sh`
 
 ---
