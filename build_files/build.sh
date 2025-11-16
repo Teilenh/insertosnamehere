@@ -16,7 +16,7 @@ dnf install -y fastfetch
 dnf clean all
 rm -rf /var/cache/dnf
 dnf autoremove -y
-rm -rf /var/log/* /tmp/* /var/tmp/*
+rm -rf /tmp/* /var/tmp/*
 
 # Use a COPR Example:
 #
