@@ -12,6 +12,10 @@ set -ouex pipefail
 # this installs a package from fedora repos
 dnf install -y fastfetch
 
+# Clean dnf cache 
+dnf clean all
+rm -rf /var/cache/dnf
+
 # Use a COPR Example:
 #
 #dnf5 -y copr enable ublue-os/staging
