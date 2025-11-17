@@ -11,11 +11,17 @@ sudo dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-re
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # this installs a package from fedora repos
-dnf install -y fastfetch
-dnf install -y steam
-dnf install -y discord
-dnf install -y kitty
-dnf remove -y foot
+PACKAGES=(
+  fastfetch
+  steam
+  discord
+  kitty
+)
+RM_PACKAGES=(
+  foot
+)
+dnf remove -y "${RM_PACKAGES[@]}"
+dnf install --setopt=install_weak_deps=False -y "${PACKAGES[@]}"
 # Clean dnf cache and autoremove
 dnf clean all
 rm -rf /var/cache/dnf
