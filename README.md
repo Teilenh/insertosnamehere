@@ -9,14 +9,14 @@ But : un environnement **performant, reproductible, et légèrement durci**, opt
 ## 🧱 Structure du dépôt
 Basé sur le **template uBlue**, avec les éléments principaux :
 - `Containerfile` — définition de l’image custom, héritant de `fedora-atomic-sway`
-- `build.sh` — script d’optimisation et de durcissement du système
+- `build.sh` 
 
 ---
 
 ## ✅ État actuel
 
 - [x] **Base :** Fedora Atomic Sway (officielle)
-- [x] SELinux actif et configuré (par défaut Fedora)
+- [x] SELinux actif et configuré (set par défaut avec Fedora)
 
 ---
 
@@ -28,11 +28,11 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 ---
 
 ### 🎮 Logiciels à intégrer
-- [ ] Steam
+- [x] Steam
 - [ ] Lutris
 - [ ] Gamemode
 - [ ] Gamescope (session gaming)
-- [ ] Discord, Firefox
+- [x] Discord, Firefox
 - [ ] Protonplus ( Flatpak ) 
 - [ ] Virt-manager / QEMU / libvirt / spice-vdagent (VM)
 - [ ] Outils : neovim, git, **fastfetch**, btop, etc.
@@ -43,7 +43,7 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 - [ ] Configuration Sway (keybinds, rules)
 - [ ] Waybar : topbar + modules personnalisés
 - [ ] Wlogout & rofi configurés ( a méditer pour rofi, j'envisage une autre option )
-- [ ] Thème GTK/Qt global (pas encore décidé)
+- [ ] Thème GTK/Qt global (pas encore choisi un théme particulier)
 - [ ] Pack d’icônes : **Arashi**
 - [ ] Wallpaper par défaut intégré
 
