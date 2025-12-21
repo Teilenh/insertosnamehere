@@ -33,7 +33,17 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
-    
+
+### COPY CONFIG FILES
+## this copy many files for Sway, Rofi, Swaylock, wlogout, Waybar
+COPY --chmod=644 build_files/files/sway/10-variables.conf /usr/share/sway/config.d/10-variables.conf
+COPY --chmod=644 build_files/files/sway/15-colors.conf /usr/share/sway/config.d/15-colors.conf
+COPY --chmod=644 build_files/files/sway/20-outputs.conf /usr/share/sway/config.d/20-outputs.conf
+COPY --chmod=644 build_files/files/sway/30-appearance.conf /usr/share/sway/config.d/30-appearance.conf
+COPY --chmod=644 build_files/files/sway/35-rules.conf /usr/share/sway/config.d/35-rules.conf
+COPY --chmod=644 build_files/files/sway/40.keybinds.conf /usr/share/sway/config.d/40.keybinds.conf
+COPY --chmod=644 build_files/files/sway/96-autostart.conf /usr/share/sway/config.d/96-autostart.conf
+
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
