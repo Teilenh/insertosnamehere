@@ -34,6 +34,12 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
 
+### REMOVE FEDORA DEFAULT SWAY BINDINGS
+RUN rm -f /usr/share/sway/config.d/60-bindings-screenshot.conf
+RUN rm -f /usr/share/sway/config.d/60-bindings-brightness.conf
+RUN  rm -f /usr/share/sway/config.d/50-rules-policykit-agent.conf
+RUN  rm -f /usr/share/sway/config.d/50-rules-pavucontrol.conf
+
 ### COPY CONFIG FILES
 ## this copy many files for Sway, Rofi, Swaylock, wlogout, Waybar
 COPY --chmod=644 build_files/files/sway/10-variables.conf /usr/share/sway/config.d/10-variables.conf
