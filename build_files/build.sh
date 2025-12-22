@@ -10,7 +10,6 @@ dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release
 # this installs a package from fedora repos
 PACKAGES=(
   fastfetch
-  flatpak
   steam
   discord
   kitty
@@ -40,12 +39,7 @@ RM_PACKAGES=(
   foot
   bluez
   cups
-  cups-client
-  cups-libs
   ModemManager
-  vmtoolsd
-  vgauthd
-  tuned
 )
 CODECS=(
   ffmpeg
