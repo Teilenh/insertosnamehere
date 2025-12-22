@@ -40,18 +40,14 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 ---
 
 ### 🖥️ Environnement Sway & UI
-- [ ] Configuration Sway (keybinds, rules)
-- [ ] Waybar : topbar + modules personnalisés
-- [ ] Wlogout & rofi configurés ( a méditer pour rofi, j'envisage une autre option )
+- [x] Configuration Sway (keybinds, rules)
+- [x] Waybar : topbar + modules personnalisés
+- [x] rofi configurés ( a méditer pour rofi, j'envisage une autre option - vicinae)
 - [ ] Thème GTK/Qt global (pas encore choisi un théme particulier)
 - [ ] Pack d’icônes : **Arashi**
-- [ ] Wallpaper par défaut intégré
+- [x] Wallpaper par défaut intégré
 
 ---
-
-### 🧰 Automatisation & outils
-- [ ] `build.sh` (optimisations et durcissement)
-- [ ] `sway-setup.sh`
 
 ---
 
