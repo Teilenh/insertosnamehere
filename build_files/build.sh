@@ -28,6 +28,8 @@ PACKAGES=(
   gvfs-mtp
   udisks2
   smartmontools
+  vulkan-tools
+
   google-noto-sans-fonts
   google-noto-serif-fonts
   google-noto-emoji-fonts
@@ -67,7 +69,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak -y install flathub md.obsidian.Obsidian com.ranfdev.DistroShelf io.github.kolunmi.Bazaar
 # Use a COPR Example:
 dnf5 copr enable scottames/vicinae
-dnf5 --skip-unavailable install vicinae
+dnf5 install --skip-unavailable vicinae
 # Disable COPRs so they don't end up enabled on the final image:
 dnf5 -y copr disable scottames/vicinae
 
