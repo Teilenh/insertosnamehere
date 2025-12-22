@@ -44,6 +44,7 @@ RM_PACKAGES=(
   ModemManager
   vmtoolsd
   vgauthd
+  tuned
 )
 CODECS=(
   ffmpeg
