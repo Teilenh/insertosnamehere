@@ -40,6 +40,7 @@ RM_PACKAGES=(
   bluez
   cups
   ModemManager
+  tuned
 )
 CODECS=(
   ffmpeg
