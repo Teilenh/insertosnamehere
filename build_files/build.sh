@@ -43,8 +43,6 @@ RM_PACKAGES=(
   tuned
 )
 CODECS=(
-  ffmpeg
-  ffmpeg-libs
   gstreamer1-plugins-base
   gstreamer1-plugins-good
   gstreamer1-plugins-bad-free
