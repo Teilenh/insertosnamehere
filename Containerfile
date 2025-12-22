@@ -57,8 +57,12 @@ COPY --chmod=644 build_files/files/sway/wall45.png /usr/share/sway/wall45.png
 COPY --chmod=644 build_files/files/waybar/config.jsonc /etc/xdg/waybar/config.jsonc
 COPY --chmod=644 build_files/files/waybar/style.css /etc/xdg/waybar/style.css
 COPY --chmod=644 build_files/files/rofi/config.rasi /usr/share/rofi/themes/menu.rasi
+RUN mkdir -p /usr/share/kitty
+COPY --chmod=644 build_files/files/kitty/kitty.conf /usr/share/kitty/kitty.conf
+COPY --chmod=644 build_files/files/kitty/current-theme.conf /usr/share/kitty/current-theme.conf
 
 ## for systemd rule, config, etc
+COPY build_files/files/sysctl/99-custom.conf /etc/sysctl.d/99-custom.conf
 ## zram configuration
 COPY build_files/files/zram/zram-generator.conf /etc/systemd/zram-generator.conf
 
