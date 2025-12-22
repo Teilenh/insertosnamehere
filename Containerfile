@@ -57,7 +57,8 @@ COPY --chmod=644 build_files/files/sway/wall45.png /usr/share/sway/wall45.png
 COPY --chmod=644 build_files/files/waybar/config.jsonc /etc/xdg/waybar/config.jsonc
 COPY --chmod=644 build_files/files/waybar/style.css /etc/xdg/waybar/style.css
 COPY --chmod=644 build_files/files/rofi/config.rasi /usr/share/rofi/themes/menu.rasi
-## for systemd rule, config, etc 
+
+## for systemd rule, config, etc
 ## zram configuration
 COPY build_files/files/zram/zram-generator.conf /etc/systemd/zram-generator.conf
 
