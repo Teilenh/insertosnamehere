@@ -9,7 +9,7 @@
   "fixed-center": true,
   "modules-left": [
     "sway/workspaces",
-    "sway/window",
+    "sway/window"
     //"custom/media",
   ],
   "modules-center": ["clock#simpleclock"],
