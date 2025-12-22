@@ -5,11 +5,10 @@ set -ouex pipefail
 ### Install packages
 # this activate some repo, first the free and non-free rpmfusion, 
 # RPM FUSION
-sudo dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # FLATHUB
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak update -y
 # this installs a package from fedora repos
 PACKAGES=(
   fastfetch
@@ -23,22 +22,47 @@ PACKAGES=(
   wlogout
   unzip
   cabextract
+  thunar-archive-plugin
+  tumbler
+  gvfs
+  gvfs-smb
+  gvfs-mtp
+  udisks2
+  smartmontools
+  google-noto-sans-fonts
+  google-noto-serif-fonts
+  google-noto-emoji-fonts
+  lilex-fonts
+  raleway-fonts
 )
 RM_PACKAGES=(
   foot
   bluez
   cups
+  cups-client
+  cups-libs
 )
-dnf remove -y "${RM_PACKAGES[@]}"
-dnf install --setopt=install_weak_deps=False -y "${PACKAGES[@]}"
+CODECS=(
+  ffmpeg
+  ffmpeg-libs
+  gstreamer1-plugins-base
+  gstreamer1-plugins-good
+  gstreamer1-plugins-bad-free
+  gstreamer1-plugins-bad-freeworld
+  gstreamer1-plugins-ugly
+  gstreamer1-libav
+)
+dnf5 remove -y "${RM_PACKAGES[@]}"
+dnf5 install --setopt=install_weak_deps=False -y "${PACKAGES[@]}"
+dnf5 install --setopt=install_weak_deps=False -y "${CODECS[@]}"
 # Clean dnf cache and autoremove
-dnf clean all
-dnf autoremove -y
+dnf5 clean all
+dnf5 autoremove -y
 
 flatpak -y install flathub md.obsidian.Obsidian com.ranfdev.DistroShelf
 # Use a COPR Example:
-sudo dnf5 copr enable scottames/vicinae
-sudo dnf5 install vicinae
+dnf5 copr enable scottames/vicinae
+dnf5 install vicinae
 # Disable COPRs so they don't end up enabled on the final image:
 dnf5 -y copr disable scottames/vicinae
 
