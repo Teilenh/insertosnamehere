@@ -53,6 +53,7 @@ COPY --chmod=644 build_files/files/sway/96-autostart.conf /usr/share/sway/config
 COPY --chmod=644 build_files/files/sway/wall45.png /usr/share/sway/wall45.png
 COPY --chmod=644 build_files/files/waybar/config.jsonc /etc/xdg/waybar/config.jsonc
 COPY --chmod=644 build_files/files/waybar/style.css /etc/xdg/waybar/style.css
+CPY --chmod=644 build_files/files/rofi/config.rasi /usr/share/rofi/themes/menu.rasi
 
 ### LINTING
 ## Verify final image and contents are correct.
