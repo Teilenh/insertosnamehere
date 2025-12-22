@@ -10,13 +10,13 @@
   "modules-left": [
     "sway/workspaces",
     "sway/window",
-    "custom/media",
+    //"custom/media",
   ],
   "modules-center": ["clock#simpleclock"],
   "modules-right": [
     "custom/notification",
     "clock",
-    "custom/weather",
+    //"custom/weather",
     "group/group-audio",
     "tray",
     "network",
