@@ -34,6 +34,7 @@ PACKAGES=(
   google-noto-emoji-fonts
   impallari-raleway-fonts
   fira-code-fonts
+  cascadia-code-nf-fonts
   pocillo-gtk-theme
   nemo
   nemo-extensions
