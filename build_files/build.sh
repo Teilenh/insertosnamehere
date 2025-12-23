@@ -35,7 +35,7 @@ PACKAGES=(
   fira-code-fonts
   pocillo-gtk-theme
   nemo
-  nemo-extension
+  nemo-extensions
   nemo-preview
   folder-color-switcher-nemo
 )
