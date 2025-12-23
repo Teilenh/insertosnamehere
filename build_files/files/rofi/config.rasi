@@ -3,7 +3,7 @@ configuration{
     lines: 6;
     font: "FiraCode Nerd Font Mono 14";
     show-icons: true;
-    icon-theme: "Tela-circle-manjaro-dark";
+    icon-theme: "Arashi";
     terminal: "kitty";
     drun-display-format: "{icon} {name}";
     location: 0;
