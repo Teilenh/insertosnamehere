@@ -30,12 +30,11 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 ### 🎮 Logiciels à intégrer
 - [x] Steam
 - [ ] Lutris
-- [ ] Gamemode
-- [ ] Gamescope (session gaming)
+- [x] Gamemode
 - [x] Discord, Firefox
-- [ ] Protonplus ( Flatpak ) 
+- [x] Protonplus ( Flatpak ) 
 - [ ] Virt-manager / QEMU / libvirt / spice-vdagent (VM)
-- [ ] Outils : neovim, git, **fastfetch**, btop, etc.
+- [x] Outils : neovim, git, **fastfetch**, btop, etc.
 
 ---
 
@@ -43,8 +42,8 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 - [x] Configuration Sway (keybinds, rules)
 - [x] Waybar : topbar + modules personnalisés
 - [x] rofi configurés ( a méditer pour rofi, j'envisage une autre option - vicinae)
-- [ ] Thème GTK/Qt global (pas encore choisi un théme particulier)
-- [ ] Pack d’icônes : **Arashi**
+- [ ] Thème GTK/Qt global
+- [x] Pack d’icônes : **Arashi**
 - [x] Wallpaper par défaut intégré
 
 ---
