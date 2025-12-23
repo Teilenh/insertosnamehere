@@ -12,6 +12,7 @@ PACKAGES=(
   fastfetch
   steam
   discord
+  lutris
   kitty
   btop
   gamemode
