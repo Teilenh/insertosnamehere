@@ -81,11 +81,17 @@ depmod -a "$KVER"
 
 # Génération explicite de l'initramfs.
 mkdir -p /usr/lib/modules/"$KVER"
+INITRAMFS="/usr/lib/modules/$KVER/initramfs.img"
+
+echo "Generating Atomic/OSTree initramfs..."
 
 dracut \
     --force \
+    --no-hostonly \
+    --reproducible \
+    --add ostree \
     --kver "$KVER" \
-    "/usr/lib/modules/$KVER/initramfs.img"
+    "$INITRAMFS"
 
 test -s "/usr/lib/modules/$KVER/initramfs.img" || {
     echo "initramfs generation failed" >&2
