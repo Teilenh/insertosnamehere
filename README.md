@@ -31,6 +31,7 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 
 ### Optimisations système
 - [ ] TO DO
+- [x] piqué des opti a Bazzite, usage des drivers mesa depuis le dépot Terra, copié des opti sysctl etc, 
 - [x] Zram configuré ( 50% ram, ou maximum 20Gb, au lieu de 1/4 de la ram dispo ) 
 ---
 
@@ -59,7 +60,7 @@ Basé sur le **template uBlue**, avec les éléments principaux :
 
 ### Hardening additionnel (léger)
 - [x] Vérification journald (rotation, taille, compression)
-- [ ] Firewalld : zones et règles affinées
+- [ ] Firewalld : zones block par défault
 
 ---
 
