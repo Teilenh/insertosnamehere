@@ -4,7 +4,9 @@ set -euo pipefail
 dnf5 install \
     --setopt=install_weak_deps=False \
     --skip-unavailable \
-    -y linux-firmware dracut
+    -y \
+    linux-firmware \
+    dracut
 
 dnf5 -y copr enable bieszczaders/kernel-cachyos
 dnf5 -y copr enable bieszczaders/kernel-cachyos-addons
@@ -23,7 +25,6 @@ restore_hooks() {
 
 trap restore_hooks EXIT
 
-# Neutralise kernel-install pendant les transactions RPM.
 for hook in "${HOOKS[@]}"; do
     if [[ -e "$HOOK_DIR/$hook" ]]; then
         mv "$HOOK_DIR/$hook" "$HOOK_DIR/$hook.disabled"
@@ -32,9 +33,17 @@ for hook in "${HOOKS[@]}"; do
     fi
 done
 
-# Retirer les anciens modules avant installation du kernel voulu.
-rm -rf /usr/lib/modules/*
+# Retirer le kernel Fedora proprement.
+dnf5 remove -y \
+    kernel \
+    kernel-core \
+    kernel-modules \
+    kernel-modules-core \
+    kernel-modules-extra \
+    kernel-devel \
+    || true
 
+# Installer CachyOS.
 dnf5 install \
     --setopt=install_weak_deps=False \
     --skip-unavailable \
@@ -42,48 +51,25 @@ dnf5 install \
     kernel-cachyos \
     kernel-cachyos-devel
 
-dnf5 remove -y \
-    kernel \
-    kernel-modules \
-    kernel-devel \
-    || true
-
-# Trouver exactement le kernel installé.
-mapfile -t kernels < <(
+KVER="$(
     find /usr/lib/modules \
         -mindepth 1 \
         -maxdepth 1 \
         -type d \
-        -printf '%f\n'
-)
+        -printf '%f\n' |
+    grep cachyos |
+    sort -V |
+    tail -n1
+)"
 
-if (( ${#kernels[@]} != 1 )); then
-    printf 'Expected exactly one kernel, found:\n' >&2
-    printf '  %s\n' "${kernels[@]}" >&2
-    exit 1
-fi
-
-KVER="${kernels[0]}"
-
-echo "CachyOS kernel: $KVER"
-
-test -d "/usr/lib/modules/$KVER" || {
-    echo "Missing /usr/lib/modules/$KVER" >&2
-    exit 1
-}
-
-test -s "/usr/lib/modules/$KVER/vmlinuz" || {
-    echo "Missing kernel image /usr/lib/modules/$KVER/vmlinuz" >&2
-    exit 1
-}
+test -n "$KVER"
+test -d "/usr/lib/modules/$KVER"
+test -s "/usr/lib/modules/$KVER/vmlinuz"
 
 depmod -a "$KVER"
 
-# Génération explicite de l'initramfs.
-mkdir -p /usr/lib/modules/"$KVER"
+# Génération compatible Atomic/rpm-ostree.
 INITRAMFS="/usr/lib/modules/$KVER/initramfs.img"
-
-echo "Generating Atomic/OSTree initramfs..."
 
 dracut \
     --force \
@@ -93,15 +79,16 @@ dracut \
     --kver "$KVER" \
     "$INITRAMFS"
 
-test -s "/usr/lib/modules/$KVER/initramfs.img" || {
-    echo "initramfs generation failed" >&2
-    exit 1
-}
+test -s "$INITRAMFS"
+lsinitrd "$INITRAMFS" >/dev/null
 
-# Vérifie que dracut sait au moins lire son propre résultat.
-lsinitrd "/usr/lib/modules/$KVER/initramfs.img" >/dev/null
+echo "Kernel:"
+ls -lh "/usr/lib/modules/$KVER/vmlinuz"
 
-echo "Kernel artifacts:"
-ls -lh \
-    "/usr/lib/modules/$KVER/vmlinuz" \
-    "/usr/lib/modules/$KVER/initramfs.img"
+echo "Initramfs:"
+ls -lh "$INITRAMFS"
+
+echo "OSTree bits:"
+lsinitrd "$INITRAMFS" |
+    grep -Ei 'ostree|prepare-root' |
+    head -50 || true
