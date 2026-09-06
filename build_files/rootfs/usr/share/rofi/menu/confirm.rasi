@@ -4,8 +4,8 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "/usr/sahre/rofi/shared/colors.rasi"
-@import                          "/usr/sahre/rofi/shared/fonts.rasi"
+@import                          "/usr/share/rofi/shared/colors.rasi"
+@import                          "/usr/share/rofi/shared/fonts.rasi"
 
 /*
 USE_ICON=YES
