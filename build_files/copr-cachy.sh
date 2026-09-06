@@ -30,6 +30,8 @@ for hook in "${HOOKS[@]}"; do
         chmod +x "$HOOK_DIR/$hook"
     fi
 done
+# Nettoyer les répertoires restants de l’ancien noyau
+rm -rf /usr/lib/modules/*
 
 # Installer le noyau CachyOS
 dnf5 install \
