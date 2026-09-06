@@ -68,14 +68,14 @@ test -s "/usr/lib/modules/$KVER/vmlinuz"
 
 depmod -a "$KVER"
 
-# Génération compatible Atomic/rpm-ostree.
 INITRAMFS="/usr/lib/modules/$KVER/initramfs.img"
 
-dracut \
+DRACUT_NO_XATTR=1 dracut \
     --force \
     --no-hostonly \
     --reproducible \
     --add ostree \
+    --tmpdir=/var/tmp \
     --kver "$KVER" \
     "$INITRAMFS"
 
