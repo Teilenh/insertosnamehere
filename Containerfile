@@ -10,6 +10,10 @@ COPY build_files/copr-cachy.sh /copr-cachy.sh
 
 FROM scratch AS finalize-script
 COPY build_files/finalize.sh /finalize.sh
+
+FROM scratch AS install-kernel
+COPY build_files/install-kernel.sh /install-kernel.sh
+
 # Base Image
 FROM quay.io/fedora/fedora-sway-atomic:latest
 
@@ -87,7 +91,7 @@ RUN --mount=type=bind,from=finalize-script,source=/,target=/ctx \
 
 RUN --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
-    --mount=type=bind,from=install-kernel-script,source=/,target=/ctx \
+    --mount=type=bind,from=install-kernel,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     bash /ctx/install-kernel.sh
 
