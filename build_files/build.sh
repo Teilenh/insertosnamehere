@@ -142,7 +142,6 @@ BUILD_PACKAGES=(
   perl-File-Copy
   clang
   llvm
-  xwin
 )
 RM_PACKAGES=(
   foot
@@ -166,14 +165,14 @@ CODECS=(
   mozilla-openh264
   lame
 )
-dnf5 remove -y "${RM_PACKAGES[@]}"
+dnf5 remove -y "${RM_PACKAGES[@]}" "${BUILD_PACKAGES}"
 dnf5 install --setopt=install_weak_deps=False --skip-unavailable -y \
   "${PACKAGES[@]}" \
   "${CODECS[@]}" \
   "${GAMING_PACKAGES[@]}" "${SCHED_EXT[@]}"
 #  "$LACT"
 # commented because no need actually, reduce build time, I uncomment these when I need it
-dnf5 install --setopt=install_weak_deps=False --setopt=tsflags=nodocs -y "${BUILD_PACKAGES[@]}"
+# dnf5 install --setopt=install_weak_deps=False --setopt=tsflags=nodocs -y "${BUILD_PACKAGES[@]}"
 dnf5 swap -y \
   --from-repo=terra-mesa \
   mesa-filesystem \
