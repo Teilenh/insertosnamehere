@@ -84,6 +84,13 @@ RUN --mount=type=bind,from=finalize-script,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=tmpfs,dst=/tmp \
     bash /ctx/finalize.sh
+
+RUN --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=bind,from=install-kernel-script,source=/,target=/ctx \
+    --mount=type=tmpfs,dst=/tmp \
+    bash /ctx/install-kernel.sh
+
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
