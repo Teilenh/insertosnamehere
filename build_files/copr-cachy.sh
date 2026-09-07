@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-set -euo pipefail
+set -eoux pipefail
 
 dnf5 install \
     --setopt=install_weak_deps=False \
@@ -74,11 +74,11 @@ DRACUT_NO_XATTR=1 dracut \
     --force \
     --no-hostonly \
     --reproducible \
-    --add ostree \
+    --add ostree --zstd -v --add fido2 \
     --tmpdir=/var/tmp \
     --kver "$KVER" \
-    "$INITRAMFS"
-
+    -f "$INITRAMFS"
+    
 test -s "$INITRAMFS"
 lsinitrd "$INITRAMFS" >/dev/null
 
