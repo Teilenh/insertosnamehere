@@ -140,6 +140,9 @@ BUILD_PACKAGES=(
   perl-FindBin
   perl-File-Compare
   perl-File-Copy
+  clang
+  llvm
+  xwin
 )
 RM_PACKAGES=(
   foot
